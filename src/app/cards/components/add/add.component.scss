@@ -1,0 +1,36 @@
+.add-card {
+    // label {
+    //     display: block;
+    //     font-size: 12px;
+    //     color: grey;
+    // }
+    h3 {
+        color: grey;
+    }
+    .cardNumber.mat-form-field {
+        display: block;
+    }
+    .card-info {
+        margin: 20px 0;
+        .mat-form-field {
+            width: 110px;
+            margin-right: 10px;
+        }
+    }
+    button {
+        width: 100px;
+        max-width: 150px;
+        margin-bottom: 15px;
+    }
+    .add-btn {
+        margin-right: 10px;
+    }
+    .cancel-btn {
+        color: cornflowerblue;
+    }
+    .error-msg {
+        color: red;
+        font-size: 14px;
+        font-family: monospace;
+    }
+}

@@ -1,0 +1,12 @@
+<div class="view-cards">
+    <div class="show-card" *ngFor="let card of cards">
+        <div class="view-card card-details">
+            <div>
+                <span class="card-name">{{card.cardName}}</span>
+                <div class="card-number">{{card.number | maskCard}}</div>
+            </div>
+            <img *ngIf="card.cardType" src="{{'assets/images/icons8-' + card.cardType + '.svg'}}">
+        </div>
+        <button mat-stroked-button color="primary" (click)="openDialog(card.id)">Remove</button>
+    </div>
+</div>

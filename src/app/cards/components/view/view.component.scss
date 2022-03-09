@@ -1,0 +1,33 @@
+.view-cards {
+    .view-card {
+        padding: 20px;
+        border: 1px darkgray solid;
+        border-radius: 3px;
+        margin: 0 20px 20px 0;
+        width: 250px;
+        max-width: 300px;
+        display: flex;
+        justify-content: space-between;
+
+        .card-name {
+            font-size: 13px;
+            color: darkgray;
+        }
+
+        .card-number {
+            font-size: 16px;
+            color: dimgray;
+        }
+    }
+    .show-card {
+        display: flex;
+        align-items: center;
+
+        button {
+            padding: 10px 35px;
+            font-size: 16px;
+            font-weight: 400;
+            color: mediumblue;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+<div class="add-card">
+    <h3>Add New Card</h3>
+
+    <mat-error *ngIf="errorMessage" class="error-msg">{{errorMessage}}</mat-error>
+
+    <form [formGroup]="form">
+        <mat-form-field class="cardNumber">
+            <mat-label>Enter Debit/Credit Card Number</mat-label>
+            <input class="form-control" matInput placeholder="Enter Debit/Credit Card Number"
+                formControlName="number" type="text" [maxlength]="cardNumberLength" [minlength]="cardNumberLength" pattern="[0-9]+" autocomplete="off">
+            <mat-icon *ngIf="cardType" matSuffix><img src="{{'assets/images/icons8-' + cardType + '.svg'}}"></mat-icon>
+
+        </mat-form-field>
+        <ng-container [ngTemplateOutlet]="errorTemplate" [ngTemplateOutletContext]="{data: form.controls.number, name: 'Card Number '}">
+        </ng-container>
+
+        <div class="card-info">
+            <mat-form-field>
+                <mat-label>Expiry Month</mat-label>
+                <mat-select formControlName="month" class="form-control">
+                    <mat-option value="" selected>MM</mat-option>
+                    <mat-option [value]="month" *ngFor="let month of months">{{month}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Expiry Year</mat-label>
+                <mat-select formControlName="year">
+                    <mat-option value="" selected>YYYY</mat-option>
+                    <mat-option [value]="year" *ngFor="let year of years">{{year}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>CVV</mat-label>
+                <input matInput placeholder="CVV" formControlName="cvv" type="text" [maxlength]="cvvLength" [minlength]="cvvLength" pattern="[0-9]+" autocomplete="off">
+                <!-- <mat-icon matSuffix>Emoji</mat-icon> -->
+            </mat-form-field>
+            <ng-container [ngTemplateOutlet]="errorTemplate" [ngTemplateOutletContext]="{data: form.controls.cvv, name: 'CVV '}">
+            </ng-container>
+        </div>
+
+
+        <button class="add-btn" mat-raised-button [disabled] = '!form.valid' (click)="addCard()">Add Card</button>
+        <button class="cancel-btn" mat-stroked-button color="primary" (click)="close()">Cancel</button>
+    </form>
+</div>
+
+<ng-template #errorTemplate let-data="data" let-name="name">
+    <div class="error-msg" *ngIf="data.touched && data.invalid">
+        <span *ngIf="data.errors.pattern else otherThanPatterErrorTemplate">{{name}} must contain only digits.</span>
+        <ng-template #otherThanPatterErrorTemplate>
+            <span *ngIf="data.errors.minlength">{{name}} must be of {{data.errors.minlength.requiredLength}} digits.</span>
+        </ng-template>
+    </div>
+</ng-template>

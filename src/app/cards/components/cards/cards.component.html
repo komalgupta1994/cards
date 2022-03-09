@@ -1,0 +1,13 @@
+<div *ngIf="showMessage" class="alert">
+    {{showMessage}}
+</div>
+<div class="cards">
+    <div class="wallet">
+        My Wallet
+    </div>
+    <div class="all-cards">
+        <app-view></app-view>
+
+        <button mat-raised-button color="primary" (click)="addCard()">Add New Card</button>
+    </div>
+</div>
