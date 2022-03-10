@@ -45,6 +45,7 @@ export class AddComponent {
       this.errorMessage = 'Please select valid month';
     }
     if (!this.errorMessage) {
+      formsValue.number = formsValue.number.replace(/\s/g, '');
       const payload = {
         ...formsValue,
         cardName: 'Debit Card',
@@ -64,6 +65,13 @@ export class AddComponent {
 
   close() {
     this.dialogRef.close();
+  }
+
+  addSpace() {
+    if (this.form.value.number.length < this.cardNumberLength) {
+      this.form.patchValue({number: this.form.value.number.replace(/\W/gi, '').replace(/(.{4})/g, '$1 ')});
+    }
+    return this.form.value.number;
   }
 
   private getYears() {

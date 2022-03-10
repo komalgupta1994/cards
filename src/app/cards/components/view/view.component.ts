@@ -33,7 +33,6 @@ export class ViewComponent implements OnInit {
   openDialog(id: number) {
     const config: any = new MatDialogConfig();
     config.data = id;
-    console.log(id);
     this.dialog.open(RemoveComponent, config);
   }
 
